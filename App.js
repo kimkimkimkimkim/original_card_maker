@@ -11,6 +11,9 @@ import {
 //screen
 import MainScreen from "./scenes/main/MainScreen";
 import CreateScreen from "./scenes/create/CreateScreen";
+import CameraScreen from "./scenes/create/CameraScreen";
+import CardScreen from "./scenes/create/CardScreen";
+
 
 const stack = createStackNavigator({
   Main:{
@@ -18,6 +21,12 @@ const stack = createStackNavigator({
   },
   Create:{
     screen:CreateScreen,
+  },
+  Camera:{
+    screen:CameraScreen
+  },
+  Card:{
+    screen:CardScreen
   }
 },{
   headerMode:"none",
