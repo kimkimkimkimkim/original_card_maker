@@ -15,6 +15,7 @@ import {
 import { Input, ButtonGroup, Avatar } from 'react-native-elements';
 
 import CreateMonsterScreen from "./CreateMonsterScreen";
+import ChangeMonsterText from "../../methods/ChangeMonsterText";
 
 export default class CreateScreen extends Component {
 
@@ -51,15 +52,21 @@ export default class CreateScreen extends Component {
     if(uri != "")this.setState({ imageURI : uri});
   }
 
-  updateIndex(selectedIndex){
-    this.setState({selectedIndex:selectedIndex})
-  }
-
+  //毎回呼ばれる
   onChangeText(key,text){
     this.state[key] = text
-    this.setState({
-      change:!this.state.change
-    })
+
+    //カード種類を変更したときはモンスターテキストを変更する
+    if(key=="cardType"){
+      this.setState({
+        change:!this.state.change,
+        monsterText:ChangeMonsterText(text)
+      })
+    }else{
+      this.setState({
+        change:!this.state.change
+      })
+    }
   }
 
   renderListItem(title,key){
