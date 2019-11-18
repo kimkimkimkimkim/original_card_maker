@@ -12,7 +12,7 @@ import { Icon, Button } from "react-native-elements"
 export default class MainScreen extends Component {
 
   toCreateScreen(){
-    this.props.navigation.navigate("Create")
+    this.props.navigation.navigate("Input")
   }
 
   render(){

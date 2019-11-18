@@ -8,8 +8,10 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "@expo/react-native-action-sheet": "^3.3.2",
     "expo": "^34.0.1",
     "expo-camera": "~6.0.0",
+    "expo-image-picker": "~6.0.0",
     "expo-permissions": "~6.0.0",
     "react": "16.8.3",
     "react-dom": "^16.8.6",

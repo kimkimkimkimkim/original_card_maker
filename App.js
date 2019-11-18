@@ -9,8 +9,11 @@ import {
 } from "react-navigation-stack"
 
 //screen
-import EmptyScreen from "./scenes/create/EmptyScreen";
+//import EmptyScreen from "./scenes/create/EmptyScreen";
 import MainScreen from "./scenes/main/MainScreen";
+import InputCardInformationScreen from "./scenes/input/InputCardInformationScreen"
+import CameraScreen from "./scenes/create/CameraScreen";
+/*
 import CreateScreen from "./scenes/create/CreateScreen";
 import CameraScreen from "./scenes/create/CameraScreen";
 import CardScreen from "./scenes/create/CardScreen";
@@ -113,3 +116,24 @@ const stack = createStackNavigator({
 
 const navigation = createAppContainer(stack)
 export default navigation;
+*/
+
+const StackNavigator = createStackNavigator(
+  {
+    Main:{
+      screen:MainScreen
+    },
+    Input:{
+      screen:InputCardInformationScreen
+    },
+    Camera:{
+      screen:CameraScreen
+    },
+  },
+  {
+    headerMode:"none",
+  }
+)
+
+const AppContainer = createAppContainer(StackNavigator)
+export default AppContainer;

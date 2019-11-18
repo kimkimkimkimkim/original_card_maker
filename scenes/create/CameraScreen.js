@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, TouchableOpacity } from 'react-native';
+import { Text, View, TouchableOpacity,SafeAreaView } from 'react-native';
 import * as Permissions from 'expo-permissions';
 import { Camera } from 'expo-camera';
 
@@ -24,10 +24,9 @@ export default class CameraExample extends React.Component {
       //CameraRoll.saveToCameraRoll(pictureData.uri);
       //console.log(pictureData)
       //this.camera._onPictureSaved({data:pictureData,id:1});
-      this.props.navigation.navigate("Create",{
-        uri:pictureData.uri,
-      })
-      this.props.navigation.state.params.update()
+      console.log("picureData:",pictureData)
+      this.props.navigation.state.params.update(pictureData.uri)
+      this.props.navigation.navigate("Input")
     }
   }
 
@@ -52,6 +51,7 @@ export default class CameraExample extends React.Component {
                 marginTop:55,
                 marginRight:15,
                 marginLeft:15,
+                marginBottom:50,
               }}>
               <View style={{flex:1}}/>
               <View 
