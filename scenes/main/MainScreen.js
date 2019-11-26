@@ -16,6 +16,7 @@ export default class MainScreen extends Component {
   }
 
   render(){
+    console.disableYellowBox = true;
     return(
       <View style={styles.container}>
         <View style={styles.container_logo}>

@@ -2,48 +2,58 @@ import React,{ Component } from "react"
 import{
   View,
   SafeAreaView,
+  ScrollView,
 } from "react-native"
 import { ActionSheetProvider } from '@expo/react-native-action-sheet'
+import { createMaterialTopTabNavigator } from "react-navigation-tabs";
+import { createAppContainer } from "react-navigation";
 
 //component
 import InputImageComponent from "../../component/input/InputImageComponent"
+import InputCardNameComponent from "../../component/input/InputCardNameComponent"
+import InputMainTextComponent from "../../component/input/InputMainTextComponent"
+
+//cardproparty
+import CardDefaultProparty from "../../config/CardDefaultProparty"
+
+//screen
+import InputMonsterCardInformationScreen from "./InputMonsterCardInformationScreen"
+
+const TopTabNavigator = createMaterialTopTabNavigator({
+  Monster:{
+    screen:InputMonsterCardInformationScreen
+  },
+  Magic:{
+    screen:InputMonsterCardInformationScreen
+  },
+  Trap:{
+    screen:InputMonsterCardInformationScreen
+  },
+})
+
+const AppContainer = createAppContainer(TopTabNavigator);
 
 export default class InputCardInformationScreen extends Component {
 
   constructor(props){
     super(props)
-    this.state = {
-      selectedIndex:0,
-      imageURI: "", 
-      change:false,
-      cardName:"",
-      nameTextColor:"黒",
-      nameTextSize:"中(全角11文字まで)",
-      cardType:"通常モンスター",
-      attribute:"闇",
-      level:"1",
-      attack:"",
-      defense:"",
-      monsterText:"【●族／通常】",
-      mainText:"",
-      mainTextSize:"中",
-      effect:"なし",
-      pendulum:"",
-      pendulumTextSize:"中",
-      pendulumBlue:"0",
-      pendulumRed:"0",
-      link:"1",
-      linkDirection:'なし',
-    }
+    this.state = CardDefaultProparty
   }
 
+
+
   render(){
+    console.log("state:",JSON.stringify(this.state))
     return(
-      <SafeAreaView>
-        <ActionSheetProvider>
-          <InputImageComponent parent={this}/>
-        </ActionSheetProvider>
-      </SafeAreaView>
+      <ActionSheetProvider>
+        <SafeAreaView style={{flex:1}}>
+          <ScrollView>
+            <InputImageComponent parent={this}/>
+            <InputCardNameComponent parent={this}/>
+            <InputMainTextComponent parent={this}/>
+          </ScrollView>
+        </SafeAreaView>
+      </ActionSheetProvider>
     )
   }
 }

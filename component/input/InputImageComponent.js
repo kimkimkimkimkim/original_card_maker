@@ -8,6 +8,7 @@ import { Avatar } from 'react-native-elements';
 import { connectActionSheet } from '@expo/react-native-action-sheet'
 import * as Permissions from 'expo-permissions';
 import * as ImagePicker from 'expo-image-picker';
+import CommonStyle from "../../common_style/CommonStyle";
 
 //props
 /*
@@ -21,7 +22,8 @@ class InputImageComponent extends Component {
   }
 
   updateImage(uri){
-    this.setState({imageURI:uri})
+    //this.setState({imageURI:uri})
+    this.props.parent.setState({imageURI:uri})
   }
 
   async pickImage(){
@@ -76,12 +78,12 @@ class InputImageComponent extends Component {
 
   render(){
     return(
-      <View style={{height:100,alignItems:"center"}}>
+      <View style={[CommonStyle.InputListContainer,{height:100,alignItems:"center",justifyContent:"center",borderWidth:0,backgroundColor:"transparent"}]}>
         <Avatar
-          size="medium"
+          size="large"
           //title="画像"
           onPress={() => this.openActionSheet()}
-          source={{uri: this.state.imageURI}}
+          source={{uri: this.props.parent.state.imageURI}}
           showEditButton
         />
       </View>
