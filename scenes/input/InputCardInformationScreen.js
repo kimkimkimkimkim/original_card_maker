@@ -12,6 +12,7 @@ import { createAppContainer } from "react-navigation";
 import InputImageComponent from "../../component/input/InputImageComponent"
 import InputCardNameComponent from "../../component/input/InputCardNameComponent"
 import InputMainTextComponent from "../../component/input/InputMainTextComponent"
+import InputCardTypeComponent from "../../component/input/InputCardTypeComponent"
 
 //cardproparty
 import CardDefaultProparty from "../../config/CardDefaultProparty"
@@ -51,6 +52,7 @@ export default class InputCardInformationScreen extends Component {
             <InputImageComponent parent={this}/>
             <InputCardNameComponent parent={this}/>
             <InputMainTextComponent parent={this}/>
+            <InputCardTypeComponent parent={this}/>
           </ScrollView>
         </SafeAreaView>
       </ActionSheetProvider>
