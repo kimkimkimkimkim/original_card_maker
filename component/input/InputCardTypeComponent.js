@@ -24,18 +24,68 @@ export default class InputCardTypeComponent extends Component {
     this.props.parent.setState({mainText:text})
   }
 
-  renderBtn(type){
+  renderBtn(type,width){
     return(
-      <TouchableOpacity
-        style={{width:40,height:20,backgroundColor:"blue"}}
-        onPress={()=>this.setState({cardType:type})}
+      <View
+        style={{width:width,height:30,padding:2}}
       >
+        <TouchableOpacity
+          style={{flex:1,backgroundColor:(this.state.cardType==type)?"orange":"lightblue",justifyContent:"center",alignItems:"center",borderRadius:5}}
+          onPress={()=>this.setState({cardType:type})}
+        >
+          <Text style={{color:"white"}}>{type}</Text>
+        </TouchableOpacity>
+      </View>
+    )
+  }
 
-      </TouchableOpacity>
+  renderTypeView(title,list,columnCount){
+    let wRatio = 100/columnCount
+    let renderBtns = []
+    list.forEach(l => {
+      renderBtns.push(this.renderBtn(l,wRatio+"%"))
+    })
+    return(
+      <View>
+        <Text>{title}</Text>
+        <View style={{flexDirection:"row",flexWrap:"wrap"}}> 
+          {renderBtns}
+        </View>
+        <View style={{height:10}}/>
+      </View>
     )
   }
 
   render(){
+
+    let monstarList = [
+      "通常モンスター",
+      "効果モンスター",
+      "儀式モンスター",
+      "融合モンスター",
+      "シンクロモンスター",
+      "エクシーズモンスター",
+      "通常ペンデュラム",
+      "効果ペンデュラム",
+      "儀式ペンデュラム",
+      "融合ペンデュラム",
+      "シンクロペンデュラム",
+      "エクシーズペンデュラム",
+      "リンクモンスター"
+    ]
+    let magicList = [
+      "通常魔法",
+      "速攻魔法",
+      "永続魔法",
+      "装備魔法",
+      "儀式魔法",
+      "フィールド魔法"
+    ]
+    let trapList = [
+      "通常罠",
+      "永続罠",
+      "カウンター罠"
+    ]
     return(
       <View>
         <View style={[CommonStyle.InputListContainer]}>
@@ -50,9 +100,23 @@ export default class InputCardTypeComponent extends Component {
         <Modal
           ref={"modal"}
           coverScreen={true}
-          style={{width:300,height:400,backgroundColor:"white",borderWidth:1,borderColor:"black"}}
+          style={{width:350,height:500,backgroundColor:"white",borderWidth:1,borderColor:"black",paddingLeft:10,paddingRight:10}}
         >
-          {this.renderBtn("monster")}
+          <View style={{flex:1,justifyContent:"center",alignItems:"center"}}>
+            {this.renderTypeView("モンスター",monstarList,2)}
+            {this.renderTypeView("魔法",magicList,2)}
+            {this.renderTypeView("罠",trapList,2)}
+
+            <TouchableOpacity
+              style={{width:100,height:30,justifyContent:"center",alignItems:"center",backgroundColor:"lightgreen",marginTop:10}}
+              onPress={()=>{
+                this.refs.modal.close()
+                this.props.parent.setState({cardType:this.state.cardType})
+              }}
+            >
+              <Text style={{color:"white"}}>決定</Text>
+            </TouchableOpacity>
+          </View>
         </Modal>
       </View>
     )
