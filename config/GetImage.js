@@ -1,3 +1,5 @@
+
+
 export default class GetImage {
     getAttributeImage(value){
         switch(value){

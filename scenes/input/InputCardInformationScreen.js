@@ -13,6 +13,7 @@ import InputImageComponent from "../../component/input/InputImageComponent"
 import InputCardNameComponent from "../../component/input/InputCardNameComponent"
 import InputMainTextComponent from "../../component/input/InputMainTextComponent"
 import InputCardTypeComponent from "../../component/input/InputCardTypeComponent"
+import InputAttriAndLevelComponent from "../../component/input/InputAttriAndLevelComponent"
 
 //cardproparty
 import CardDefaultProparty from "../../config/CardDefaultProparty"
@@ -53,6 +54,7 @@ export default class InputCardInformationScreen extends Component {
             <InputCardNameComponent parent={this}/>
             <InputMainTextComponent parent={this}/>
             <InputCardTypeComponent parent={this}/>
+            <InputAttriAndLevelComponent parent={this}/>
           </ScrollView>
         </SafeAreaView>
       </ActionSheetProvider>
