@@ -7,22 +7,16 @@ import {
 } from "react-native"
 import CommonStyle from "../../common_style/CommonStyle";
 
-export default class InputCardNameComponent extends Component {
-
-  _onChangeText(text){
-    //this.setState({cardName:text})
-    this.props.parent.setState({mainText:text})
-  }
+export default class InputMonsterTextComponent extends Component {
 
   render(){
     return(
       <View style={[CommonStyle.InputListContainer]}>
-        <Text style={CommonStyle.InputListTitle}>説明</Text>
+        <Text style={CommonStyle.InputListTitle}>モンスターテキスト</Text>
         <TextInput
           style={styles.textInput}
-          value={this.props.parent.state.mainText}
-          onChangeText={text => this._onChangeText(text)}
-          multiline={true}
+          value={this.props.parent.state.monsterText}
+          onChangeText={text => this.props.parent.setState({monsterText:text})}
         />
       </View>
     )
@@ -31,13 +25,12 @@ export default class InputCardNameComponent extends Component {
 
 const styles=StyleSheet.create({
   textInput:{
-    width:"100%",
+    //height:35,
     backgroundColor:"white",
     marginTop:5,
     borderRadius:5,
     padding:5,
     fontSize:18,
-    marginBottom:5,
-    minHeight:60,
+    marginBottom:5
   }
 })

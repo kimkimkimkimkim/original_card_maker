@@ -73,6 +73,21 @@ export default class InputCardTypeComponent extends Component {
       "エクシーズペンデュラム",
       "リンクモンスター"
     ]
+    let monsterText = [
+      "【●族／通常】",
+      "【●族／効果】",
+      "【●族／儀式／効果】",
+      "【●族／融合／効果】",
+      "【●族／シンクロ／効果】",
+      "【●族／エクシーズ／効果】",
+      "【●族／ペンデュラム】",
+      "【●族／ペンデュラム／効果】",
+      "【●族／儀式／ペンデュラム／効果】",
+      "【●族／融合／ペンデュラム／効果】",
+      "【●族／シンクロ／ペンデュラム／効果】",
+      "【●族／エクシーズ／ペンデュラム／効果】",
+      "【●族／リンク／効果】",
+    ]
     let magicList = [
       "通常魔法",
       "速攻魔法",
@@ -111,7 +126,11 @@ export default class InputCardTypeComponent extends Component {
               style={{width:100,height:30,justifyContent:"center",alignItems:"center",backgroundColor:"lightgreen",marginTop:10}}
               onPress={()=>{
                 this.refs.modal.close()
-                this.props.parent.setState({cardType:this.state.cardType})
+                let index = monstarList.findIndex(m => m==this.state.cardType)
+                this.props.parent.setState({
+                  cardType:this.state.cardType,
+                  monsterText:(index!=-1)?monsterText[index]:""
+                })
               }}
             >
               <Text style={{color:"white"}}>決定</Text>

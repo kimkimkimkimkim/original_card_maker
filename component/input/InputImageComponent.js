@@ -78,9 +78,12 @@ class InputImageComponent extends Component {
 
   render(){
     return(
-      <View style={[CommonStyle.InputListContainer,{height:100,alignItems:"center",justifyContent:"center",borderWidth:0,backgroundColor:"transparent"}]}>
+      <View style={[CommonStyle.InputListContainer,{alignItems:"center",justifyContent:"center",borderWidth:0,backgroundColor:"transparent"}]}>
         <Avatar
-          size="large"
+          size={270}
+          editButton={{
+            size:50
+          }}
           //title="画像"
           onPress={() => this.openActionSheet()}
           source={{uri: this.props.parent.state.imageURI}}
